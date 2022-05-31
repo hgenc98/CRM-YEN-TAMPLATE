@@ -10,36 +10,36 @@ include "../islem2.php";
         $breadcrumbs = [["link" => "kullanici_subeler.php", "baslik" => "Kullanici Subeleri"], ["link" => "kullanici_ekle_form.php", "baslik" => "Sube Ekle"]];
         include "../breadcrumb.php"; ?>
         <form class="form-signin w-100" method="post" action="kullanici_sube_ekle_post.php" enctype="multipart/form-data">
-            <div class="container w-50 bg-light" style="border: solid;border-radius:20px;">
-            <div>
-                <h1 style="color:brown" class="h3 mb-3 mt-3 font-weight-normal">ŞUBE EKLEMEK İÇİN </h1>
-                <p style="color:brown;text-align:center">Lütfen gerekli belgeleri eksiksiz doldurunuz </p>
-            </div>
-                <div class="form-label-group mt-3 mb-3" style="color:brown">
-                    ŞUBE ADI *
-                    <input type="text" class="form-control" name="sube_adi" placeholder="sube_adi" required="" autofocus="">
-                </div>
-                <div class="form-label-group mb-3" style="color:brown">
-                    YETKİLİ ADI VE SOYADI *
-                    <input type="text" class="form-control" name="yetkili_adi" placeholder="yetkili_adi" required="">
-                </div>
-                <div class="form-label-group mb-3" style="color:brown">
-                    YETKİLİ TELEFONU *
-                    <input type="number" class="form-control" name="yetkili_telefon" placeholder="yetkili_telefon" required="">
-                </div>
-                <div class="form-label-group mb-3" style="color:brown">
-                    E-POSTA *
-                    <input type="email" class="form-control" name="e_posta" placeholder="e_posta" required="">
-                </div>
-                <div style="text-align: center;">
-                    <button class="mb-3 mt-3" type="submit" style="border:4px outset, ; border-radius:10px;background-image: radial-gradient(100% 100% at 100% 0px,
-            rgb(90, 218, 255) 0px, rgb(84, 104, 255) 100%) !important; width: 50%;">
-                        EKLE
-                    </button>
+            <div class="container w-50 col-12 " style="background-color:white;border: 1px solid var(--tblr-border-color);
+                              border-radius: 4px;">
+                <div class="row">
+                    <div>
+                        <h1 class="text-danger h3 mb-3 mt-3 font-weight-normal">ŞUBE EKLEMEK İÇİN </h1>
+                        <p>Lütfen gerekli belgeleri eksiksiz doldurunuz </p>
+                    </div>
+                    <hr>
+                    <div class="form-label-group mb-3 text-start mt-3 col-6">
+                        E-POSTA *
+                        <input type="email" class="form-control mt-3" name="e_posta" placeholder="e posta" required="">
+                    </div>
+                    <div class="form-label-group mb-3 text-start mt-3 col-6">
+                        YETKİLİ ADI VE SOYADI *
+                        <input type="text" class="form-control mt-3" name="yetkili_adi" placeholder="yetkili adi" required="">
+                    </div>
+                    <div class="form-label-group mb-3 text-start mt-3 col-6">
+                        YETKİLİ TELEFONU *
+                        <input type="number" class="form-control mt-3" name="yetkili_telefon" placeholder="yetkili telefon" required="">
+                    </div>
+
+                    <div class="form-label-group mb-3 text-start mt-3 col-6">
+                        ŞUBE ADI *
+                        <input type="text" class=" form-control mt-3" name="sube_adi" placeholder="sube adi" required="" autofocus="">
+                    </div>
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary mb-3">DÜZENLE</button>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
 </div>
-<script src="../dist/js/tabler.min.js"></script>
-<script src="../dist/js/demo.min.js"></script>

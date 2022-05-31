@@ -11,11 +11,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>CRM</title>
-    <link href="/tabler/dist/css/tabler.min.css" rel="stylesheet" />
-    <link href="/tabler/dist/css/tabler-flags.min.css" rel="stylesheet" />
-    <link href="/tabler/dist/css/tabler-payments.min.css" rel="stylesheet" />
-    <link href="/tabler/dist/css/tabler-vendors.min.css" rel="stylesheet" />
-    <link href="/tabler/dist/css/demo.min.css" rel="stylesheet" />
+    <link href="/crm-yeni/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="/crm-yeni/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/crm-yeni/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/crm-yeni/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/crm-yeni/dist/css/demo.min.css" rel="stylesheet" />
     <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -32,25 +32,22 @@ session_start();
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/tabler/anasayfa.php">
-                        <img src="/tabler/static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                    <a href="/crm-yeni/anasayfa.php">
+                        <img src="/crm-yeni/img/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
                     </a>
                 </h1>
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                            <span class="avatar avatar-sm" style="background-image: url(/tabler/static/avatars/000m.jpg)"></span>
-                            <div class="d-none d-xl-block ps-2">
+                            <span class="avatar avatar-sm" style="background-image: url(/crm-yeni/img/ben.jpg)"></span>
+                            <div class="d-none d-xl-block ps-3">
                                 <h5 class="col" style="color: black;"><strong><?php echo $_SESSION['adi']; ?></strong></h5>
-
+                                <div class="mt-1 small text-muted"><?php echo $_SESSION['e_posta']; ?></div>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <a href="#" class="dropdown-item">Set status</a>
-                            <a href="#" class="dropdown-item">Profile & account</a>
-                            <a href="#" class="dropdown-item">Feedback</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="admin.php" class="dropdown-item">ÇIKIŞ YAP</a>
+                        
+                            <a href="../admin.php" class="dropdown-item">ÇIKIŞ YAP</a>
                         </div>
                     </div>
                 </div>
@@ -61,8 +58,8 @@ session_start();
                 <div class="navbar navbar-light">
                     <div class="container-xl">
                         <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/tabler/anasayfa.php">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/crm-yeni/anasayfa.php">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                                         <!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                         <svg xmlns="header.php" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -101,7 +98,7 @@ session_start();
                                     <div class="dropdown-menu">
                                         <div class="dropdown-menu-columns">
                                             <div class="dropdown-menu-column">
-                                                <a class="dropdown-item" href="/tabler/kullanici_icerik/kullanici.php">
+                                                <a class="dropdown-item" href="/crm-yeni/kullanici_icerik/kullanici.php">
                                                     KULLANICILAR
                                                 </a>
 
@@ -110,7 +107,7 @@ session_start();
                                         </div>
                                         <div class="dropdown-menu-columns">
                                             <div class="dropdown-menu-column">
-                                                <a class="dropdown-item" href="/tabler/kullanici_icerik/kullanici_subeler.php">
+                                                <a class="dropdown-item" href="/crm-yeni/kullanici_icerik/kullanici_subeler.php">
                                                     KULLANICI ŞUBELERİ
                                                 </a>
 
@@ -138,7 +135,7 @@ session_start();
                                     <div class="dropdown-menu">
                                         <div class="dropdown-menu-columns">
                                             <div class="dropdown-menu-column">
-                                                <a class="dropdown-item" href="/tabler/musteri_icerik/musteriler.php">
+                                                <a class="dropdown-item" href="/crm-yeni/musteri_icerik/musteriler.php">
                                                     MÜŞTERİLER
                                                 </a>
 
@@ -147,7 +144,7 @@ session_start();
                                         </div>
                                         <div class="dropdown-menu-columns">
                                             <div class="dropdown-menu-column">
-                                                <a class="dropdown-item" href="/tabler/musteri_icerik/musteri_eleman.php">
+                                                <a class="dropdown-item" href="/crm-yeni/musteri_icerik/musteri_eleman.php">
                                                     MÜŞTERİ ELEMANI
                                                 </a>
 
@@ -162,10 +159,10 @@ session_start();
                             $rol = $_SESSION['rol'];
                             if ($rol == 1 || $rol == 2) { ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/tabler/satis_icerik/satislar.php">
+                                    <a class="nav-link" href="/crm-yeni/satis_icerik/satislar.php">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             <!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
-                                            <svg xmlns="/tabler/satis_icerik/satislar.php" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="/crm-yeni/satis_icerik/satislar.php" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M14 3v4a1 1 0 0 0 1 1h4" />
                                                 <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
@@ -180,10 +177,10 @@ session_start();
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/tabler/ziyaret_icerik/ziyaret.php">
+                                    <a class="nav-link" href="/crm-yeni/ziyaret_icerik/ziyaret.php">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             <!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
-                                            <svg xmlns="/tabler/ziyaret_icerik/ziyaret.php" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="/crm-yeni/ziyaret_icerik/ziyaret.php" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M14 3v4a1 1 0 0 0 1 1h4" />
                                                 <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />

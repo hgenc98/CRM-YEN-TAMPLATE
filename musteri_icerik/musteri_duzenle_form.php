@@ -20,46 +20,49 @@ if ($_GET) {
     $breadcrumbs = [["link" => "musteriler.php", "baslik" => "Musteriler"], ["link" => "musteri_duzenle_form.php?id=" . $_GET["id"], "baslik" => "Musteri Duzenle"]];
     include "../breadcrumb.php"; ?>
     <div style="text-align:-webkit-center;">
-        <form class="form-signin mt-5 w-50" method="post" action="musteri_duzenle_post.php" enctype="multipart/form-data" style="text-align:-webkit-center ;border:solid;border-radius:20px;text-align: -webkit-center;background-color:white">
+        <form class="form-signin mt-5 w-50 page" method="post" action="musteri_duzenle_post.php" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
-            <div class="container">
-                <div style="text-align:-webkit-center;">
-                    <h1 style="color:brown" class="h3 mb-3 mt-3 font-weight-normal">MÜŞTERİ DÜZENLEMEK İÇİN </h1>
-                    <p style="color:brown">Lütfen gerekli belgeleri eksiksiz doldurunuz </p>
-                </div>
-                <hr>
-                <div class="input-group mb-4">
-                    <label class="input-group-text" style="color:black" for="inputGroupSelect02">MÜŞTERİ ADI SOYADI *</label>
-                    <input type="text" value="<?= $duzenle["musteri_adi"] ?>" class="form-control" name="musteri_adi" placeholder="musteri_adi" required autofocus>
+            <div class="container col-12  " style="background-color:white;border: 1px solid var(--tblr-border-color);border-radius: 4px;">
+                <div class="row">
+                    <div style="text-align:-webkit-center;">
+                        <h1 style="color:brown" class="h3 mb-3 mt-3 font-weight-normal">MÜŞTERİ DÜZENLEMEK İÇİN </h1>
+                        <p style="color:brown">Lütfen gerekli belgeleri eksiksiz doldurunuz </p>
+                    </div>
+                    <hr>
+                    <div class="form-label-group mb-3 text-start mt-3  col-6">
+                        MÜŞTERİ ADI SOYADI *
+                        <input type="text" value="<?= $duzenle["musteri_adi"] ?>" class="mt-3 form-control" name="musteri_adi" placeholder="musteri_adi" required autofocus>
+
+                    </div>
+
+                    <div class="form-label-group mb-3 text-start mt-3  col-6">
+                        MÜŞTERİ ELEMAN ADI *
+                        <select name="eleman_adi" id="" class="mt-3 col-12" style="height: 35px;">
+                            <?php foreach ($elemanlar as $eleman) { ?>
+                                <option value="<?php echo $eleman["eleman_adi"] ?>" <?php echo $eleman["eleman_adi"] == $eleman["id"] ? "selected" : NULL ?>> <?php echo $eleman["eleman_adi"] ?></option>
+                            <?php } ?>
+                        </select>
+
+                    </div>
+                    <div class="form-label-group mb-3 text-start mt-3  ">
+                        MÜŞTERİ TELEFON NO *
+                        <input type="text" value="<?= $duzenle["telefon_no"] ?>" class="mt-3 form-control" name="telefon_no" placeholder="telefon_no" required autofocus>
+
+                    </div>
+                    <div class="input-group ">
+                        <h4 class="mt-3"> MÜŞTERİ ADRESİ *</h4>
+                        <textarea name="aciklama" id="editor1" class="ck_editor mt-3" style="width: 480px;"><?= $duzenle["adres"] ?></textarea>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary mb-3">DÜZENLE</button>
+                    </div>
 
                 </div>
-
-                <div class="input-group mb-4">
-                    <label class="input-group-text" style="color:black" for="inputGroupSelect02">MÜŞTERİ ELEMAN ADI *</label>
-                    <select name="eleman_adi" id="">
-                        <?php foreach ($elemanlar as $eleman) { ?>
-                            <option value="<?php echo $eleman["eleman_adi"] ?>" <?php echo $eleman["eleman_adi"] == $eleman["id"] ? "selected" : NULL ?>> <?php echo $eleman["eleman_adi"] ?></option>
-                        <?php } ?>
-                    </select>
-
-                </div>
-                <div class="input-group mb-4 ">
-                    <label class="input-group-text" style="color:black" for="inputGroupSelect02">MÜŞTERİ TELEFON NO *</label>
-                    <input type="text" value="<?= $duzenle["telefon_no"] ?>" class="form-control" name="telefon_no" placeholder="telefon_no" required autofocus>
-
-                </div>
-                <div class="input-group ">
-                    <h4 style="color: black;"> MÜŞTERİ ADRESİ *</h4>
-                    <textarea name="aciklama" id="editor1" class="ck_editor" style="width: 480px;"><?= $duzenle["adres"] ?></textarea>
-                </div>
-
-                <div class="form-footer">
-                    <button type="submit" class="btn btn-primary mb-3">DÜZENLE</button>
-                </div>
-
             </div>
         </form>
     </div>
+</div>
 </div>
 <script>
     $(document).ready(function() {

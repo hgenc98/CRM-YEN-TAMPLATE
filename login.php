@@ -18,6 +18,7 @@ $_SESSION["rol"] = $kullanici[0]['role_id'];
 $_SESSION["kullanici_id"] = $kullanici[0]['id'];
 $_SESSION["firma_id"] = $kullanici[0]['firma_id'];
 $_SESSION["sozlesme_bitis"] = $kullanici[0]['sozlesme_bitis'];
+$_SESSION["e_posta"] = $kullanici[0]['e_posta'];
  header("Location:anasayfa.php");
 }elseif(count($kullanici) == 0){    
     echo "Sözleşme süreniz bitmiştir.Lütfen Bizimle iletişime geçin";

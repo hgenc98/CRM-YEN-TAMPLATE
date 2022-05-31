@@ -30,26 +30,25 @@ die;*/
     ?>
     <form class="form-signin" method="POST" action="ziyaret_duzenle_post.php" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
-        <div style="text-align:-webkit-center ">
-
-            <div class="w-50 container" style="text-align:-webkit-center ;border:solid;border-radius:20px;text-align: -webkit-center;background-color:white">
-                <h3 style=" color: black;"class="mt-4">ZİYARET BİLGİLERİNİ DÜZENLE</h3>
+        <div class="container w-50 col-12  " style="background-color:white;border: 1px solid var(--tblr-border-color);border-radius: 4px;">
+            <div class="row">
+                <h3 class="text-danger text-center mt-4">ZİYARET BİLGİLERİNİ DÜZENLE</h3>
                 <hr>
                 <?php
                 $rol = $_SESSION['rol'];
                 if ($rol == 1) { ?>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text mb-4" style="color:black" for="inputGroupSelect01">TAMAMLAYAN KİŞİ </label>
-                        <select name="tamamlayan_id" id="" style="width:35%;height:36px">
+                    <div class="form-label-group mb-3  mt-3  col-6">
+                        TAMAMLAYAN KİŞİ *
+                        <select name="tamamlayan_id" class="form-select form-control ml-3 mt-3"style="height: 35px;">
                             <?php foreach ($kullanicilar as $kullanici) { ?>
                                 <option value="<?php echo $kullanici["id"] ?> " <?php echo $duzenle["tamamlayan_id"] == $kullanici["id"] ? "selected" : NULL ?>> <?php echo $kullanici["kullanici_adi"] ?></option>
                             <?php } ?>
                         </select>
 
                     </div>
-                    <div class="input-group mb-2">
-                        <label class="input-group-text mb-4" style="color:black;width:31%" for="inputGroupSelect02">MÜŞTERİ ADI </label>
-                        <select name="musteri_id" id="" style="width:35%;height:36px">
+                    <div class="form-label-group mb-3 text-start mt-3  col-6">
+                        MÜŞTERİMİZİN ADI *
+                        <select name="musteri_id" class="form-select form-control ml-3 mt-3" style="height:35px">
                             <?php foreach ($musteriler as $musteri) {
                             ?>
                                 <option value="<?php echo $musteri["id"] ?>" <?php echo $duzenle["musteri_id"] == $musteri["id"] ? "selected" : NULL ?>> <?php echo $musteri["musteri_adi"] ?> </option>
@@ -59,33 +58,33 @@ die;*/
 
 
                     </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text mb-4" style="color:black" for="inputGroupSelect02"> MÜŞTERİ ELEMAN ADI</label>
-                        <select name="musteri_eleman_id" id="" style="width:31%;height:36px">
+                    <div class="form-label-group mb-3 text-start mt-3  col-6">
+                        MÜŞTERİ ELEMAN ADI *
+                        <select name="musteri_eleman_id" class="form-select form-control ml-3 mt-3"style="height:35px">
                             <?php foreach ($eleman as $eleman) { ?>
                                 <option value="<?php echo $eleman["id"] ?> " <?php echo $duzenle["musteri_eleman_id"] == $eleman["id"] ? "selected" : NULL ?>> <?php echo $eleman["eleman_adi"] ?></option>
                             <?php } ?>
                         </select>
                     </div>
-                    <div class="input-group mb-4">
-                        <label class="input-group-text" style="color:black" for="inputGroupSelect02">MÜŞTERİ TELEFON NUMARASI</label>
-                        <input style="width:31%;height:36px" type="text" value="<?= $duzenle["tel_no"] ?>" class="form-control" name="tel_no" placeholder="tel_no" required autofocus>
+                    <div class="form-label-group mb-3 text-start mt-3  col-6">
+                        MÜŞTERİ TELEFON NUMARASI *
+                        <input style="height:35px" type="text" value="<?= $duzenle["tel_no"] ?>" class="form-control mt-3 " name="tel_no" placeholder="tel_no" required autofocus>
                     </div>
-                    <div class="input-group mb-4">
-                        <label class="input-group-text" style="color:black" for="inputGroupSelect02">TAMAMLANACAK TARİH</label>
-                        <input type="date-time" value="<?= $duzenle["tamamlanacak_tarih"] ?>" class="form-control" name="tamamlanacak_tarih" placeholder="tamamlanacak_tarih" required autofocus>
+                    <div class="form-label-group mb-3 text-start mt-3  col-6">
+                        TAMAMLANACAK TARİH *
+                        <input type="date-time" value="<?= $duzenle["tamamlanacak_tarih"] ?>" class="form-control mt-3"  name="tamamlanacak_tarih" placeholder="tamamlanacak_tarih" required autofocus>
                     </div>
                 <?php }
                 ?>
-                <div class="input-group mb-4">
-                    <label class="input-group-text" style="color:black" for="inputGroupSelect02">MÜŞTERİ ADRES</label>
-                    <input type="text" value="<?= $duzenle["musteri_adres"] ?>" class="form-control" name="musteri_adres" placeholder="musteri_adres" required autofocus>
+                <div class="form-label-group mb-3 text-start mt-3  col-6">
+                    MÜŞTERİ ADRES *
+                    <input type="text" value="<?= $duzenle["musteri_adres"] ?>" class="form-control mt-3" name="musteri_adres" placeholder="musteri_adres" required autofocus>
                 </div>
-                <div class="input-group mb-4">
+                <div class="form-label-group mb-3 text-start mt-3 ">
                     <h3 style="color: black;text-align:-webkit-center"> AÇIKLAMA *</h3>
                     <textarea name="aciklama" id="editor1" class="ck_editor" style="width: 480px;"><?= $duzenle["aciklama"] ?></textarea>
                 </div>
-                <div class="form-footer">
+                <div class="form-footer text-center">
                     <button type="submit" class="btn btn-primary mb-3">DÜZENLE</button>
                 </div>
             </div>

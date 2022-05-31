@@ -79,71 +79,106 @@ if ($_SESSION['rol'] == 1) {
         <div class="page-body">
             <div class="container">
                 <div class="row row-deck row-cards">
+                    <div class="d-flex justify-content-around">
+                        <div class=" col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class=" text-center">
+                                        <div class="subheader">
 
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class=" text-center">
-                                    <div class="subheader">
-                                        <h2> Müşterilerimiz </h2>
+                                            <div class="h1 mb-2 text-center">
+                                                <?php $musteri_sayac = $db->query('SELECT COUNT(*) as sayac FROM musteriler where musteriler.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
+                                                echo ($musteri_sayac["sayac"]);
+                                                ?>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class=" d-flex justify-content-evenly">
+                                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 3rem; height:3rem;border-radius:5px" class="icon icon-tabler icon-tabler-users  text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <desc>Download more icon variants from https://tabler-icons.io/i/user</desc>
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                                            </svg>
+                                            <h4 class="mt-3">
+                                                Müşterilerimiz
+                                            </h4>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <div class="subheader">
+                                            <div class="h1 mb-0 me-2 text-center">
+                                                <?php $musteri_sayac_2 = $db->query('SELECT COUNT(*) as sayac FROM ziyaretler where ziyaretler.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
+                                                echo ($musteri_sayac_2["sayac"]);
+                                                ?>
+                                            </div>
+
+                                        </div>
                                     </div>
                                     <hr>
-                                </div>
-                                <div class="h1 mb-3 text-center"><?php $musteri_sayac = $db->query('SELECT COUNT(*) as sayac FROM musteriler where musteriler.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
-                                                                    echo ($musteri_sayac["sayac"]);
-                                                                    ?>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <div class="subheader">
-                                        <h2>ZİYARETLERİMİZ</h2>
+                                    <div class=" d-flex justify-content-evenly">
+                                        <svg xmlns="/crm-yeni/ziyaret_icerik/ziyaret.php" style="width: 3rem; height:3rem;border-radius:5px" class="icon   text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                            <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                            <line x1="9" y1="9" x2="10" y2="9" />
+                                            <line x1="9" y1="13" x2="15" y2="13" />
+                                            <line x1="9" y1="17" x2="15" y2="17" />
+                                        </svg>
+                                        <h4 class="mt-3">ZİYARETLERİMİZ</h4>
                                     </div>
                                 </div>
-                                <hr>
 
-                                <div class="h1 mb-0 me-2 text-center">
-                                    <?php $musteri_sayac_2 = $db->query('SELECT COUNT(*) as sayac FROM ziyaretler where ziyaretler.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
-                                    echo ($musteri_sayac_2["sayac"]);
-                                    ?>
-                                </div>
                             </div>
-
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <div class="subheader">
-                                        <h2>SATIŞLARIMIZ</h2>
+                        <div class=" col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <div class="subheader">
+                                            <div class="h1 mb-0 me-2 text-center">
+                                                <?php $musteri_sayac_3 = $db->query('SELECT COUNT(*) as sayac FROM satislar where satislar.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
+                                                echo ($musteri_sayac_3["sayac"]);
+                                                ?>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class=" d-flex justify-content-evenly">
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="width: 3rem; height:3rem;border-radius:5px" class="icon icon-tabler icon-tabler-file-dollar text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <desc>Download more icon variants from https://tabler-icons.io/i/file-dollar</desc>
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                            <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                            <path d="M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
+                                            <path d="M12 17v1m0 -8v1"></path>
+                                        </svg>
+
+                                        <h4 class="mt-3">SATIŞLARIMIZ</h4>
                                     </div>
                                 </div>
-                                <hr>
 
-                                <div class="h1 mb-0 me-2 text-center">
-                                    <?php $musteri_sayac_3 = $db->query('SELECT COUNT(*) as sayac FROM satislar where satislar.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
-                                    echo ($musteri_sayac_3["sayac"]);
-                                    ?>
-                                </div>
                             </div>
-
                         </div>
+
                     </div>
-
-
 
 
                 <?php } ?>
                 <div class="card mt-5">
                     <div>
-                        <h5 class="mt-3 " style="color:red;text-align: center;">ANASAYFA YAPILMIŞ VEYA YAPILACAK ZİYARET BİLGİLERİ</h5>
+                        <h2 class="mt-3 text-danger" style="text-align: center;">ANASAYFA YAPILMIŞ VEYA YAPILACAK ZİYARET BİLGİLERİ</h2>
                     </div>
 
                     <div class="card-body">
@@ -198,7 +233,12 @@ if ($_SESSION['rol'] == 1) {
                                                                     <path d="M2 12l5 5m5 -5l5 -5"></path>
                                                                 </svg><?php
                                                                     } else { ?>
-                                                                <strong><i style="color: red;" class="fa-thin fa-x"></i></strong>
+                                                                <strong><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-letter-x text-danger" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                        <desc>Download more icon variants from https://tabler-icons.io/i/letter-x</desc>
+                                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                        <line x1="7" y1="4" x2="17" y2="20"></line>
+                                                                        <line x1="17" y1="4" x2="7" y2="20"></line>
+                                                                    </svg></a></strong>
                                                             <?php } ?>
                                                         </td>
                                                         <td style="color:black" class="card-header "><?php echo (new DateTime($item['tarih']))->format("d/m/y h:i:s") ?></td>
@@ -221,7 +261,12 @@ if ($_SESSION['rol'] == 1) {
                                                                     <path d="M2 12l5 5m5 -5l5 -5"></path>
                                                                 </svg><?php
                                                                     } else { ?>
-                                                                <strong> <i style="color: black;" class="fa-thin fa-x"></i></strong>
+                                                                <strong><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-letter-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                        <desc>Download more icon variants from https://tabler-icons.io/i/letter-x</desc>
+                                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                        <line x1="7" y1="4" x2="17" y2="20"></line>
+                                                                        <line x1="17" y1="4" x2="7" y2="20"></line>
+                                                                    </svg></strong>
                                                             <?php } ?>
                                                         </td>
                                                     </form>
@@ -261,9 +306,9 @@ if ($_SESSION['rol'] == 1) {
                             </table>
                         </div>
                     </div>
+
+
                 </div>
-
-
                 <footer class="footer footer-transparent d-print-none">
                     <div class="container-xl">
                         <div class="row text-center align-items-center flex-row-reverse">
