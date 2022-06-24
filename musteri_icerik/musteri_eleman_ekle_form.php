@@ -61,7 +61,7 @@ include "../islem2.php";
                     <input type="text" class="form-control mt-3" name="unvan" placeholder="e_posta" required="">
                 </div>
                 <div class="form-footer">
-                    <button type="submit" class="btn btn-primary mb-3">DÜZENLE</button>
+                    <button type="submit" class="btn btn-primary mb-3">EKLE</button>
                 </div>
 
             </div>

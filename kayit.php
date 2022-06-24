@@ -8,7 +8,7 @@ include "db.php";
 if(isset($_POST['onay'])) { // checkbox seçilmişse "on" değeri gönderiliyor
     echo '';
 } else { // seçilmemişse bu değer sayfaya hiç gönderilmiyor
-    echo 'Onaylamadınız.';
+    echo '';
 }
 
 $EKLE1 = $db->prepare("INSERT INTO firma SET firma_adi=?,sozlesme_baslangic=?, sozlesme_bitis=?");

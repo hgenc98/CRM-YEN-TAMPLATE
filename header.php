@@ -16,6 +16,7 @@ session_start();
     <link href="/crm-yeni/dist/css/tabler-payments.min.css" rel="stylesheet" />
     <link href="/crm-yeni/dist/css/tabler-vendors.min.css" rel="stylesheet" />
     <link href="/crm-yeni/dist/css/demo.min.css" rel="stylesheet" />
+   <link rel="stylesheet" href="ziyaret.css">
     <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -25,39 +26,19 @@ session_start();
 </head>
 
 <body>
-    <div class="wrapper">
-        <header class="navbar navbar-expand-md navbar-light d-print-none">
-            <div class="container-xl">
+    <div class="container-fluid">
+        <header class="navbar navbar-expand-md d-print-none text-center" style="border-bottom: 1px solid rgba(9, 30, 66, 0.13);">
+            <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="/crm-yeni/anasayfa.php">
-                        <img src="/crm-yeni/img/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                        <img src="/crm-yeni/img/logom.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
                     </a>
                 </h1>
-                <div class="navbar-nav flex-row order-md-last">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                            <span class="avatar avatar-sm" style="background-image: url(/crm-yeni/img/ben.jpg)"></span>
-                            <div class="d-none d-xl-block ps-3">
-                                <h5 class="col" style="color: black;"><strong><?php echo $_SESSION['adi']; ?></strong></h5>
-                                <div class="mt-1 small text-muted"><?php echo $_SESSION['e_posta']; ?></div>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        
-                            <a href="../admin.php" class="dropdown-item">ÇIKIŞ YAP</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <div class="navbar-expand-md">
-            <div class="collapse navbar-collapse" id="navbar-menu">
-                <div class="navbar navbar-light">
-                    <div class="container-xl">
-                        <ul class="navbar-nav">
+                <div class="container-fluid">
+                        <ul class="navbar-nav d-flex justify-content-center">
                             <li class="nav-item ">
                                 <a class="nav-link" href="/crm-yeni/anasayfa.php">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -198,10 +179,24 @@ session_start();
                         </ul>
 
                     </div>
+                <div class="navbar-nav flex-row order-md-last">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                            <span class="avatar avatar-sm" style="background-image: url(/crm-yeni/img/ben.jpg)"></span>
+                            <div class="d-none d-xl-block ps-3">
+                                <h5 class="col" style="color: black;"><strong><?php echo $_SESSION['adi']; ?></strong></h5>
+                                <div class="mt-1 small text-muted"><?php echo $_SESSION['e_posta']; ?></div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        
+                            <a href="/crm-yeni/admin.php" class="dropdown-item">ÇIKIŞ YAP</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
+        </header>
+       
 </body>
 
 </html>

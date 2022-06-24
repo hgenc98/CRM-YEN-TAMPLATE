@@ -75,7 +75,7 @@ $musteri = $db->query('SELECT * FROM musteriler WHERE  musteriler.firma_id =' . 
                         <input type="checkbox" name="durum" class="btn-check ml-3" id="btn-check-3" autocomplete="off" disabled>
                         <label class="btn btn-primary" name="durum" for="btn-check-3">TAMAMLANMADI</label>
 
-                        <button type="submit" class="btn btn-primary mb-3 mt-3">DÜZENLE</button>
+                        <button type="submit" class="btn btn-primary mb-3 mt-3">EKLE</button>
                     </div>
                 </div>
             </div>

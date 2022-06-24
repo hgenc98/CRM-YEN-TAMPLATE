@@ -28,8 +28,8 @@ if ($_SESSION['rol'] == 1) {
 }
 
 ?>
-<div class="page-wrapper">
-    <div class="container-xl">
+<div class="page-container-fluid">
+    <div class="container-flud">
         <!-- Page title -->
 
         <div class="d-print-none mt-3">
@@ -45,7 +45,7 @@ if ($_SESSION['rol'] == 1) {
                 </div>
                 <!-- Page title actions -->
                 <div class="col-sm-6 col-lg-3">
-                    <div class="card">
+                    <div class="text-center">
                         <div class="card-body">
 
                             <div class="subheader">
@@ -77,9 +77,14 @@ if ($_SESSION['rol'] == 1) {
     $rol = $_SESSION['rol'];
     if ($rol == 1) { ?>
         <div class="page-body">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row row-deck row-cards">
                     <div class="d-flex justify-content-around">
+
+                       
+
+
+
                         <div class=" col-lg-3">
                             <div class="card">
                                 <div class="card-body">
@@ -94,24 +99,22 @@ if ($_SESSION['rol'] == 1) {
                                         </div>
                                         <hr>
                                         <div class=" d-flex justify-content-evenly">
-                                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 3rem; height:3rem;border-radius:5px" class="icon icon-tabler icon-tabler-users  text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                           <a href="musteri_icerik/musteriler.php"> <svg xmlns="http://www.w3.org/2000/svg" style="width: 3rem; height:3rem;border-radius:5px" class="icon icon-tabler icon-tabler-users  text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <desc>Download more icon variants from https://tabler-icons.io/i/user</desc>
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <circle cx="12" cy="7" r="4"></circle>
                                                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                            </svg>
+                                            </svg></a>
                                             <h4 class="mt-3">
                                                 Müşterilerimiz
                                             </h4>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
                             </div>
                         </div>
+
+
                         <div class=" col-lg-3">
                             <div class="card">
                                 <div class="card-body">
@@ -127,14 +130,14 @@ if ($_SESSION['rol'] == 1) {
                                     </div>
                                     <hr>
                                     <div class=" d-flex justify-content-evenly">
-                                        <svg xmlns="/crm-yeni/ziyaret_icerik/ziyaret.php" style="width: 3rem; height:3rem;border-radius:5px" class="icon   text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                       <a href="ziyaret_icerik/ziyaret.php"><svg xmlns="/crm-yeni/ziyaret_icerik/ziyaret.php" style="width: 3rem; height:3rem;border-radius:5px" class="icon   text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M14 3v4a1 1 0 0 0 1 1h4" />
                                             <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
                                             <line x1="9" y1="9" x2="10" y2="9" />
                                             <line x1="9" y1="13" x2="15" y2="13" />
                                             <line x1="9" y1="17" x2="15" y2="17" />
-                                        </svg>
+                                        </svg></a>
                                         <h4 class="mt-3">ZİYARETLERİMİZ</h4>
                                     </div>
                                 </div>
@@ -156,14 +159,14 @@ if ($_SESSION['rol'] == 1) {
                                     </div>
                                     <hr>
                                     <div class=" d-flex justify-content-evenly">
-                                        <svg xmlns="http://www.w3.org/2000/svg" style="width: 3rem; height:3rem;border-radius:5px" class="icon icon-tabler icon-tabler-file-dollar text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                       <a href="satis_icerik/satislar.php"> <svg xmlns="http://www.w3.org/2000/svg" style="width: 3rem; height:3rem;border-radius:5px" class="icon icon-tabler icon-tabler-file-dollar text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <desc>Download more icon variants from https://tabler-icons.io/i/file-dollar</desc>
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
                                             <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
                                             <path d="M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
                                             <path d="M12 17v1m0 -8v1"></path>
-                                        </svg>
+                                        </svg></a>
 
                                         <h4 class="mt-3">SATIŞLARIMIZ</h4>
                                     </div>

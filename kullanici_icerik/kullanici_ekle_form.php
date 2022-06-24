@@ -58,7 +58,7 @@ include "../islem2.php";
                         </select>
                     </div>
                     <div class="form-footer">
-                        <button type="submit" class="btn btn-primary mb-3">DÜZENLE</button>
+                        <button type="submit" class="btn btn-primary mb-3">EKLE</button>
                     </div>
 
                 </div>

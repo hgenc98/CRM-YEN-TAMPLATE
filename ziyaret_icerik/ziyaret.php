@@ -180,9 +180,15 @@ if ($_SESSION['rol'] == 1) {
         </div>
 </div>
 <div class="col-12 container ">
-    <div class="d-flex justify-content-center container">
+    <div class="d-flex justify-content-between container">
         <?php $rol = $_SESSION['rol'];
         if ($rol == 2) { ?>
+      
+
+
+
+
+
             <div class="kutu3 ">
                 <h4>
                     <?php $satis_sayac2 = $db->prepare('SELECT COUNT(*) as sayac FROM ziyaretler where tamamlayan_id=:kullanici_id');
@@ -228,7 +234,7 @@ if ($_SESSION['rol'] == 1) {
 <div class="col-12 container page">
     <div class="card mt-5">
         <div class="container">
-           
+
             <h2 class="mt-3 text-danger" style="text-align: center;">ZİYARET BİLGİLERİ</h2>
         </div>
         <div class="card-body">
@@ -324,12 +330,7 @@ if ($_SESSION['rol'] == 1) {
                                                 </i><?php
                                                 } else { ?>
                                                 <input style="color: black;font-weight: bold;" class="btn btn-danger" type="submit" value="X">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-letter-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <desc>Download more icon variants from https://tabler-icons.io/i/letter-x</desc>
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <line x1="7" y1="4" x2="17" y2="20"></line>
-                                                    <line x1="17" y1="4" x2="7" y2="20"></line>
-                                                </svg>
+
                                             <?php } ?>
                                         </td>
                                     </form>
