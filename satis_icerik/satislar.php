@@ -7,14 +7,14 @@ include "../db.php";
 $sql = $db->prepare('SELECT * FROM satislar ');
 
 
-if ($_SESSION['rol'] == 1) {
+if ($_SESSION['kullanici']['role_id'] == 1) {
 
     $sql = $db->prepare('SELECT satislar.*, satislar.satis_tarihi,satis_not,musteriler.musteri_adi as musteri_adi , kullanicilar.kullanici_adi FROM satislar
     INNER JOIN musteriler ON musteriler.id = satislar.musteri_id
     INNER JOIN kullanicilar ON kullanicilar.id = satislar.kullanici_id
-    where satislar.kullanici_id=:id AND satislar.firma_id=' . $_SESSION["firma_id"] . '
+    where satislar.kullanici_id=:id AND satislar.firma_id=' . $_SESSION['kullanici']["firma_id"] . '
     ');
-    $data = $sql->execute(['id' => $_SESSION['kullanici_id']]);
+    $data = $sql->execute(['id' => $_SESSION['kullanici']['id']]);
     $sql = $sql->fetchAll();
 } else {
 
@@ -22,8 +22,8 @@ if ($_SESSION['rol'] == 1) {
     $sql = $db->prepare('SELECT satislar.*,musteriler.musteri_adi as musteri_adi , kullanicilar.kullanici_adi , satislar.id as satis_id1 FROM satislar
     INNER JOIN musteriler ON musteriler.id = satislar.musteri_id
     INNER JOIN kullanicilar ON kullanicilar.id = satislar.kullanici_id
-    where satislar.kullanici_id=:id AND satislar.firma_id=' . $_SESSION["firma_id"] . '');
-    $data = $sql->execute(['id' => $_SESSION['kullanici_id']]);
+    where satislar.kullanici_id=:id AND satislar.firma_id=' .  $_SESSION['kullanici']["firma_id"] . '');
+    $data = $sql->execute(['id' => $_SESSION['kullanici']['id']]);
     $sql = $sql->fetchAll();
 }
 ?>
@@ -68,7 +68,7 @@ if ($_SESSION['rol'] == 1) {
                             <th>ADET</th>
                             <th>SATIŞ DETAYI</th>
 
-                            <?php $rol = $_SESSION['rol'];
+                            <?php $rol = $_SESSION['kullanici']['role_id'];
                             if ($rol == 1) { ?>
                                 <th>DÜZENLE</th>
                                 <th>SİL</th>
@@ -103,7 +103,7 @@ if ($_SESSION['rol'] == 1) {
                                         </svg></a></td>
 
 
-                                <?php $rol = $_SESSION['rol'];
+                                <?php $rol = $_SESSION['kullanici']['role_id'];
                                 if ($rol == 1) { ?>
                                     <td>
                                         <div class="col-auto">
@@ -154,7 +154,7 @@ if ($_SESSION['rol'] == 1) {
             <p class="ps-3 mt-3 text-primary">SİSTEMDE KAYITLI OLAN SATIŞLARIMIZIN SAYISI </p>
             <p class="ps-3 mt-3 text-primary">=</p>
             <div class="ps-3 mb-3  mt-3 text-primary">
-                <?php $satis_sayac = $db->query('SELECT COUNT(*) as sayac FROM satislar where satislar.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
+                <?php $satis_sayac = $db->query('SELECT COUNT(*) as sayac FROM satislar where satislar.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '')->fetch();
                 echo ($satis_sayac["sayac"]);
                 ?>
 

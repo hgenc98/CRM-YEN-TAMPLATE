@@ -110,7 +110,7 @@ $z_not = $z_not->fetchAll();
                                     <th>NOTUN EKLENDİĞİ TARİH</th>
                                     <th>DÜZENLE</th>
                                     <?php
-                                    $rol = $_SESSION['rol'];
+                                    $rol = $_SESSION['kullanici']['role_id'];
                                     if ($rol == 1) { ?>
                                         <th class="card-header " scope="col">SİL</th>
                                     <?php } ?>
@@ -131,7 +131,7 @@ $z_not = $z_not->fetchAll();
                                                     <path d="M10 18l5 -5a1.414 1.414 0 0 0 -2 -2l-5 5v2h2z"></path>
                                                 </svg></a></td>
                                         <?php
-                                        $rol = $_SESSION['rol'];
+                                        $rol = $_SESSION['kullanici']['role_id'];
                                         if ($rol == 1) { ?>
                                             <td style="color:black" class="card-header"><a href="ziyaret_not_sil.php?id=<?php echo $not["id"] ?>&ziyaretId=<?= $_GET["id"] ?>"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                         <desc>Download more icon variants from https://tabler-icons.io/i/trash</desc>
@@ -165,7 +165,8 @@ $z_not = $z_not->fetchAll();
                 <div class="col-4 mt-3 mb-5">
                     <img src="<?php echo "../img/" . $item['resim'] ?>" alt="Resim bulunamadı" style="width: 80% ;max-height:350px;height:auto">
                     <br>
-                    <button type="button" class="btn btn-info mt-3 "><a class="mt-3 mb-5" style="color: white !important;" href="ziyaret_resim_sil.php?id=<?php echo $item["id"] . "&geriId=" . $_GET["id"] ?>"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                   <a class="mt-3 mb-5 btn bg-danger text-center" style="color: white !important;height:50px" href="ziyaret_resim_sil.php?id=<?php echo $item["id"] . "&geriId=" . $_GET["id"] ?>">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash " style=" width:34 ;height:24;" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <desc>Download more icon variants from https://tabler-icons.io/i/trash</desc>
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <line x1="4" y1="7" x2="20" y2="7"></line>
@@ -173,7 +174,7 @@ $z_not = $z_not->fetchAll();
                                 <line x1="14" y1="11" x2="14" y2="17"></line>
                                 <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
                                 <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                            </svg></a></button>
+                            </svg></a>
                 </div>
 
             <?php

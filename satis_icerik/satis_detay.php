@@ -11,7 +11,7 @@ $sql->execute([
 
 */
 
-if ($_SESSION['rol'] == 1) {
+if ( $_SESSION['kullanici']['role_id'] == 1) {
     $satis = $db->prepare('SELECT satis_kalemleri.*,kullanicilar.kullanici_adi as kullanici_adi FROM satis_kalemleri
     LEFT JOIN satislar ON satislar.id = satis_kalemleri.satis_id
     LEFT JOIN kullanicilar ON kullanicilar.id = satislar.kullanici_id
@@ -33,7 +33,7 @@ if ($_SESSION['rol'] == 1) {
 
 <div class="col-12 container">
 <?php
-$breadcrumbs = [["link" => "satis_icerik/satislar.php", "baslik" => "Satislar"], ["link" => "satis_icerik/satis_detay.php?id=" . $_GET["id"], "baslik" => "Satis Detay"]];
+$breadcrumbs = [["link" => "satislar.php", "baslik" => "Satislar"], ["link" => "satis_detay.php?id=" . $_GET["id"], "baslik" => "Satis Detay"]];
 include "../breadcrumb.php"; ?>
 
     <div class="card mt-5">
@@ -53,7 +53,7 @@ include "../breadcrumb.php"; ?>
                             <th>EKLENME TARİHİ</th>
                             <th>GÜNCELLEME TARİHİ</th>
 
-                            <?php $rol = $_SESSION['rol'];
+                            <?php $rol = $_SESSION['kullanici']['role_id'];
                             if ($rol == 1) { ?>
                                 <th>DÜZENLE</th>
                                 <th>SİL</th>
@@ -76,7 +76,7 @@ include "../breadcrumb.php"; ?>
                                 <td><?php echo (new DateTime($item['guncelleme_tarihi']))->format("d/m/y h:i:s") ?></td>
 
 
-                                <?php $rol = $_SESSION['rol'];
+                                <?php $rol =  $_SESSION['kullanici']['role_id'];
                                 if ($rol == 1) { ?>
                                     <td><button type="button" class="btn btn-info"><a href="satis_kalemleri_duzenle_form.php?id=<?php echo $item['id'] ?>"><svg style="color:white" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-pencil" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <desc>Download more icon variants from https://tabler-icons.io/i/file-pencil</desc>

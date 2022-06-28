@@ -3,3 +3,14 @@
     height: 120px;
     text-align: center;
 }
+
+#main {
+    max-width: 1250px;
+    background: #fff;
+    margin: 0px auto 0;
+    position: relative;
+}
+
+#top-pading {
+    margin-top: 40px;
+}

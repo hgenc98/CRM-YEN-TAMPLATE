@@ -60,12 +60,23 @@ include "db.php";
                         <input type="text" style="width: auto;text-align:center" class="form-control mb-4" id="text" name="tel" placeholder="Telefon Numaranız">
 
                     </div>
+                    <form action="ziyaret_icerik/ziyaret_resim_ekle_post.php" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <p style="color:white">ZİYARET YERİ *</p>
+                                <input type="text" class="form-control col-5" name="tamamlayan_id" placeholder="" required="" autofocus="">
+                            </div>
+                            <label for="exampleFormControlFile1">RESSİM EKLE</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="resim">
+                        </div>
+                        <div> <input type="submit" value="gönder"></div>
+                    </form>
                     <form action="kayit.php" method="post">
                         <div class="card mb-3">
                             <div class="container">
                                 <h5 class="card-header">Sözleşme</h5>
                                 <div class="card-body">
-                                    <h5 class="card-title"style="color:red">Sözleşmemiz Minimum 6 Ay'dır </h5>
+                                    <h5 class="card-title" style="color:red">Sözleşmemiz Minimum 6 Ay'dır </h5>
                                     <p class="card-text">İlk Ay Ücretsiz Deneme Sürecidir , İkinci Aydan İtibaren Ücretlendirme İçin Yöneticimizle İletişime Geçin , Aksi Takdirde Sistemden Yönetici Tarafından Silineceksiniz </p>
                                     <label> <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                                         <a href=""> Onaylıyorum</a></label>

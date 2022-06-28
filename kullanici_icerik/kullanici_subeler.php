@@ -4,7 +4,7 @@ include "../db.php";
 
 
 
-$sql = $db->query('SELECT * FROM kullanici_subeler where kullanici_subeler.firma_id = ' . $_SESSION["firma_id"] . '');
+$sql = $db->query('SELECT * FROM kullanici_subeler where kullanici_subeler.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '');
 ?>
 
 <div class="container col-md-12">
@@ -103,7 +103,7 @@ $sql = $db->query('SELECT * FROM kullanici_subeler where kullanici_subeler.firma
             <p class="ps-3 text-primary">=</p>
             <div class="ps-3 mb-3 text-primary">
 
-                <?php $sube_sayac = $db->query('SELECT COUNT(*) as sayac FROM kullanici_subeler  where kullanici_subeler.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
+                <?php $sube_sayac = $db->query('SELECT COUNT(*) as sayac FROM kullanici_subeler  where kullanici_subeler.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '')->fetch();
                 echo ($sube_sayac["sayac"]);
                 ?>
 

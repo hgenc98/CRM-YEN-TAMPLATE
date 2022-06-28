@@ -12,7 +12,7 @@
 
     <?php foreach ($butonlar as $b) : ?>
         <?php
-        $rol = $_SESSION['rol'];
+        $rol = $_SESSION['kullanici']['role_id'];
         if ($rol == 1) { ?>
             <a href="<?= $b["link"] ?>" class="btn btn-<?= $b["renk"] ?>"><i class="fa me-2 fa-<?= $b["ikon"] ?>"></i> <?= $b["ad"] ?></a>
         <?php }  ?>

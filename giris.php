@@ -52,19 +52,19 @@ if ($_GET) {
                 <h1 class="animated fadeInUp animate1" id="title-login"> HOŞ GELDİNİZ !</h1>
                 <h1 class="animated fadeInUp animate1 hidden" id="title-signup">HOŞGELDİNİZ !</h1>
                 <fieldset>
-                    <p style="color:white">Adınız Soyadınız :</p>
-                    <input class="login animated fadeInUp animate2" name="e_mail" type="textbox" required placeholder="Kullanıcı adı" value="">
-                    <p style="color:white">Adınız Soyadınız :</p>
+                    <p style="color:white">Kullanıcı Girisi :</p>
+                    <input class="login animated fadeInUp animate2" name="e_mail" type="textbox" required placeholder="Kullanıcı adı ( deneme@deneme.com )" value="">
+                    <p style="color:white">Şifreniz :</p>
                     <input class="login animated fadeInUp animate3" name="sifre" type="password" required placeholder="sifre" value="">
-                    <input type="submit" id="login-form-submit" class="login_form button animated fadeInUp animate4" value="Log in">
+                    <input type="submit" id="login-form-submit" class="login_form button animated fadeInUp animate4" value="Giris Yap">
                 </fieldset>
             </form>
-            <form id="signup-fieldset" method="POST" action="kayit.php" class="hidden" style="position: relative; margin:auto;padding-top: 0;">
+            <form id="signup-fieldset" method="POST" action="kayit.php" class="hidden" style="position: relative; margin:auto;padding-top: 0;" enctype="multipart/form-data">
                 <h1 class="animated fadeInUp animate1" id="title-login">ARAMIZA KATILMAK İSTER MİSİNİZ? !</h1>
                 <h1 class="animated fadeInUp animate1 hidden" id="title-signup">HOŞGELDİNİZ ARAMIZA !</h1>
                 <fieldset>
                     <p style="color:white">Adınız Soyadınız :</p>
-                    <input class="login animated fadeInUp animate2" name="kullanici_adi" type="textbox" required placeholder="kullanıcı adı" value="">
+                    <input class="login animated fadeInUp animate2" name="kullanici_adi" type="textbox" required placeholder="adınız soyadınız " value="">
                     <p style="color:white">Firma Adı :</p>
                     <input class="login animated fadeInUp animate2" name="firma_adi" type="textbox" required placeholder="firma adı" value="">
                     <p style="color:white">Email address :</p>
@@ -73,17 +73,17 @@ if ($_GET) {
                     <input class="login animated fadeInUp animate3" name="sifre" type="password" placeholder="sifre" required value="">
                     <p style="color:white">TELEFON NUMARASI:</p>
                     <input class="login animated fadeInUp animate2" name="tel" type="textbox" required placeholder="tel" value="">
+                    <p style="color:white">FİRMA LOGO :</p>
+                    <input class="login animated fadeInUp animate2" name="resim" type="file" required placeholder="resimler" value="">
+                    
                     <input type="submit" id="signup-form-submit" class="login_form button animated fadeInUp animate4 hidden" value="Kaydol">
+                    <p><a id="lost-password-link" href="" class="animated fadeIn animate5">SÖZLEŞME</a></p>
                 </fieldset>
-                <p><a id="lost-password-link" href="" class="animated fadeIn animate5">SÖZLEŞME</a></p>
             </form>
         </div>
     </div>
 
     <script src="giris.js"></script>
-
-
-
 </body>
 
 </html>

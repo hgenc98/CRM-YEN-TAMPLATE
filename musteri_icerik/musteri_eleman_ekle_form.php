@@ -37,7 +37,7 @@ include "../islem2.php";
                 </div>
 
                 <div class="form-label-group mb-3 text-start mt-3 col-6">
-                    ELEMAN TELEFON NUMARASI *
+                    ELEMAN TEL. NO *
                     <input type="text" class="form-control mt-3" name="telefon_no" placeholder="telefon_no" required="">
                 </div>
                 <div class="form-label-group mb-3 text-start mt-3 col-6">

@@ -5,42 +5,52 @@ session_start();
 ob_start();
 include "db.php";
 
-$sql=$db->prepare("SELECT * from kullanicilar where e_posta=? and sifre=? ");
+$sql = $db->prepare("SELECT kullanicilar.*, firma.firma_logo from kullanicilar 
+LEFT JOIN firma on firma.id=kullanicilar.firma_id
+where kullanicilar.e_posta=? and kullanicilar.sifre=?
+");
 $EKLEYAZ = $sql->execute([$_POST['e_mail'], $_POST['sifre']]);
 
-$kullanici =$sql->fetchAll();
+$kullanici = $sql->fetch();
 
 
-if(count($kullanici) > 0){
-$_SESSION["login"] = true;
-$_SESSION["adi"] = $kullanici[0]['kullanici_adi'];
-$_SESSION["rol"] = $kullanici[0]['role_id'];
-$_SESSION["kullanici_id"] = $kullanici[0]['id'];
-$_SESSION["firma_id"] = $kullanici[0]['firma_id'];
-$_SESSION["sozlesme_bitis"] = $kullanici[0]['sozlesme_bitis'];
-$_SESSION["e_posta"] = $kullanici[0]['e_posta'];
- header("Location:anasayfa.php");
-}elseif(count($kullanici) == 0){    
-    echo "Sözleşme süreniz bitmiştir.Lütfen Bizimle iletişime geçin";
+if ($kullanici) {
+    $_SESSION["login"] = true;
+    $_SESSION["kullanici"] = $kullanici;
+
+    /*
+
+$_SESSION["adi"] = $kullanici['kullanici_adi'];
+$_SESSION["rol"] = $kullanici['role_id'];
+$_SESSION["kullanici_id"] = $kullanici['id'];
+$_SESSION["firma_id"] = $kullanici['firma_id'];
+$_SESSION["sozlesme_bitis"] = $kullanici['sozlesme_bitis'];
+$_SESSION["e_posta"] = $kullanici['e_posta'];
+$_SESSION["firma_logo"] = $kullanici['firma_logo'];
+// */
+
+   
+} elseif (!$kullanici) {
+    echo "Kullanıcı adı veya Şifre Yanlış.  Veya ";
+    echo " Sözleşme süreniz bitmiştir.Lütfen Bizimle iletişime geçin";
     header("Refresh: 2; url=giris.php");
-}else{
+} else {
+    echo "Giriş Yaptınız Tebrikler ...";
+    header("Refresh:2; url=anasayfa.php");
+}
+//  header("Location:anasayfa.php");
+
+
+ //formdan gelen bilgileri çekip ayar.php dosyamızdaki bilgilerle doğru olup olmadığını kontrol ediyoruz.
+ if ($kullanici) {
+    //eğer bilgiler doğruysa login ismi verdiğimiz session kaydını yapıyoruz.ve session kaydını kullanıcı adıyla şifremize eşitliyoruz.
+    $_SESSION["login"] = "true";
+    $_SESSION["user"] = $user;
+    $_SESSION["pass"] = $pass;
+    header("Location:anasayfa.php");
+} else {
+    //diğer durumda hata mesajı verip giriş sayfamıza yönlendiriyoruz.
     echo "Kullanıcı adı veya Şifre Yanlış.";
     header("Refresh: 2; url=giris.php");
-}
-
-
-
-
-//formdan gelen bilgileri çekip ayar.php dosyamızdaki bilgilerle doğru olup olmadığını kontrol ediyoruz.
-if(($_POST["e_mail"]==$user) and ($_POST["sifre"]==$pass)){
-//eğer bilgiler doğruysa login ismi verdiğimiz session kaydını yapıyoruz.ve session kaydını kullanıcı adıyla şifremize eşitliyoruz.
-$_SESSION["login"] = "true";
-$_SESSION["user"] = $user;
-$_SESSION["pass"] = $pass;
-//header("Location:anasayfa.php");
-}else{
-//diğer durumda hata mesajı verip giriş sayfamıza yönlendiriyoruz.
-//echo "Kullanıcı adı veya Şifre Yanlış.";
-//header("Refresh: 2; url=giris.php");
 }
 ob_end_flush();

@@ -30,7 +30,7 @@ include "../islem2.php";
 
 $sql = $db->query('SELECT musteriler.id as id, musteriler.adres, musteri_eleman.eleman_adi, musteriler.musteri_adi, musteriler.baslik, musteriler.telefon_no  
   FROM musteriler LEFT JOIN musteri_eleman on musteriler.id = musteri_eleman.musteri_id
-   where musteriler.firma_id = ' . $_SESSION["firma_id"] . '')->fetchAll();
+   where musteriler.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '')->fetchAll();
 
 $eleman = $db->query('SELECT * FROM  musteri_eleman   where id = musteri_id')->fetch();
 
@@ -51,7 +51,7 @@ $eleman = $db->query('SELECT * FROM  musteri_eleman   where id = musteri_id')->f
 
     ]
     ];
-    $rol = $_SESSION['rol'];
+    $rol = $_SESSION['kullanici']['role_id'];
     include "../breadcrumb.php";
     ?>
 
@@ -126,7 +126,7 @@ $eleman = $db->query('SELECT * FROM  musteri_eleman   where id = musteri_id')->f
         <p class="ps-3 text-primary">=</p>
         <div class="ps-3 mb-3 text-primary">
 
-            <?php $musteri_sayac = $db->query('SELECT COUNT(*) as sayac FROM musteriler  where musteriler.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
+            <?php $musteri_sayac = $db->query('SELECT COUNT(*) as sayac FROM musteriler  where musteriler.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '')->fetch();
             echo ($musteri_sayac["sayac"]);
             ?>
 

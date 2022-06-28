@@ -40,13 +40,13 @@ if ($_POST) {
     $sql->execute([$_POST['id']]);
 }
 
-if ($_SESSION['rol'] == 1) {
+if ($_SESSION['kullanici']['role_id'] == 1) {
     $sql = $db->prepare('SELECT ziyaretler.*,tamamlayan.kullanici_adi as tamamlayan_adi,musteriler.musteri_adi,musteri_eleman.eleman_adi, musteriler.baslik as baslik FROM ziyaretler
     LEFT JOIN musteriler ON ziyaretler.musteri_id =musteriler.id
     LEFT JOIN kullanicilar as tamamlayan on ziyaretler.tamamlayan_id = tamamlayan.id
     LEFT JOIN musteri_eleman  on musteri_eleman.id = ziyaretler.musteri_eleman_id
-    WHERE tamamlayan_id = :id AND ziyaretler.firma_id =' . $_SESSION["firma_id"] . '');
-    $data = $sql->execute(['id' => $_SESSION['kullanici_id']]);
+    WHERE tamamlayan_id = :id AND ziyaretler.firma_id =' . $_SESSION['kullanici']["firma_id"] . '');
+    $data = $sql->execute(['id' => $_SESSION['kullanici']['id']]);
     $sql = $sql->fetchAll();
 } else {
     isset($_SESSION['kullanici_id']);
@@ -54,8 +54,8 @@ if ($_SESSION['rol'] == 1) {
     LEFT JOIN musteriler ON ziyaretler.musteri_id = musteriler.id
     LEFT JOIN kullanicilar AS tamamlayan ON ziyaretler.tamamlayan_id = tamamlayan.id
     LEFT JOIN musteri_eleman ON musteri_eleman.id = ziyaretler.musteri_eleman_id
-    WHERE tamamlayan_id = :id AND ziyaretler.firma_id = ' . $_SESSION["firma_id"] . ' ');
-    $data = $sql->execute(['id' => $_SESSION['kullanici_id']]);
+    WHERE tamamlayan_id = :id AND ziyaretler.firma_id = ' . $_SESSION['kullanici']["firma_id"] . ' ');
+    $data = $sql->execute(['id' => $_SESSION['kullanici']['id']]);
     $sql = $sql->fetchAll();
 }
 ?>
@@ -84,7 +84,7 @@ if ($_SESSION['rol'] == 1) {
     <form action="ziyaret.php" method="POST">
         <div style="text-align: -webkit-center;" class="bg-light mt-3">
             <div class="d-flex justify-content-between">
-                <?php $rol = $_SESSION['rol'];
+                <?php $rol = $_SESSION['kullanici']['role_id'];
                 if ($rol == 1) { ?>
 
                     <div class=" col-lg-3">
@@ -93,8 +93,8 @@ if ($_SESSION['rol'] == 1) {
                                 <div class="text-center">
                                     <div class="subheader">
                                         <div class="h1 mb-0 me-2 text-center">
-                                            <?php $musteri_sayac_2 = $db->query('SELECT COUNT(*) as sayac FROM ziyaretler where ziyaretler.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
-                                            echo ($musteri_sayac_2["sayac"]);
+                                            <?php $ziyaret_sayac_2 = $db->query('SELECT COUNT(*) as sayac FROM ziyaretler where ziyaretler.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '')->fetch();
+                                            echo ($ziyaret_sayac_2["sayac"]);
                                             ?>
                                         </div>
 
@@ -122,9 +122,9 @@ if ($_SESSION['rol'] == 1) {
                                 <div class="text-center">
                                     <div class="subheader">
                                         <div class="h1 mb-0 me-2 text-center">
-                                            <?php $satis_sayac3 = $db->query('SELECT COUNT(*) as sayac FROM ziyaretler where  durum=1 ')->fetch();
+                                            <?php $ziyaret_sayac = $db->query('SELECT COUNT(*) FROM ziyaretler  where firma_id =' . $_SESSION['kullanici']["firma_id"] . ' AND durum=1')->fetch();
 
-                                            echo ($satis_sayac3["sayac"]);
+                                            echo ($ziyaret_sayac[0]);
                                             ?>
                                         </div>
 
@@ -152,8 +152,9 @@ if ($_SESSION['rol'] == 1) {
                                 <div class="text-center">
                                     <div class="subheader">
                                         <div class="h1 mb-0 me-2 text-center">
-                                            <?php $satis_sayac3 = $db->query('SELECT COUNT(*) as sayac FROM ziyaretler where  durum=0 ')->fetch();
-                                            echo ($satis_sayac3["sayac"]);
+                                            <?php $ziyaret_sayac = $db->query('SELECT COUNT(*) as sayac FROM ziyaretler where firma_id =' . $_SESSION['kullanici']["firma_id"] . ' AND durum=0')->fetch();
+
+                                            echo ($ziyaret_sayac["sayac"]);
                                             ?>
                                         </div>
 
@@ -181,18 +182,12 @@ if ($_SESSION['rol'] == 1) {
 </div>
 <div class="col-12 container ">
     <div class="d-flex justify-content-between container">
-        <?php $rol = $_SESSION['rol'];
+        <?php $rol = $_SESSION['kullanici']['role_id'];
         if ($rol == 2) { ?>
-      
-
-
-
-
-
             <div class="kutu3 ">
                 <h4>
                     <?php $satis_sayac2 = $db->prepare('SELECT COUNT(*) as sayac FROM ziyaretler where tamamlayan_id=:kullanici_id');
-                    $data = $satis_sayac2->execute(['kullanici_id' => $_SESSION['kullanici_id']]);
+                    $data = $satis_sayac2->execute(['kullanici_id' => $_SESSION['kullanici']['id']]);
                     $satis_sayac2 = $satis_sayac2->fetch();
                     echo ($satis_sayac2["sayac"]);
                     ?>
@@ -204,26 +199,37 @@ if ($_SESSION['rol'] == 1) {
             <div class="kutu3 ">
                 <h4>
                     <?php $satis_sayac2 = $db->prepare('SELECT COUNT(*) as sayac FROM ziyaretler where tamamlayan_id=:kullanici_id and durum=0 ');
-                    $data = $satis_sayac2->execute(['kullanici_id' => $_SESSION['kullanici_id']]);
+                    $data = $satis_sayac2->execute(['kullanici_id' => $_SESSION['kullanici']['id']]);
                     $satis_sayac2 = $satis_sayac2->fetch();
                     echo ($satis_sayac2["sayac"]);
                     ?>
                     <br>
                     <hr>
-                    <button type="button" class="btn btn-danger"><i style="color: white;" class="fa-thin fa-x"></i></button>
+                    <button type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-letter-x " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <desc>Download more icon variants from https://tabler-icons.io/i/letter-x</desc>
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <line x1="7" y1="4" x2="17" y2="20"></line>
+                            <line x1="17" y1="4" x2="7" y2="20"></line>
+                        </svg></button>
                 </h4>
             </div>
             <div style="text-align: -webkit-center;">
                 <div class="kutu3 ">
                     <h4>
                         <?php $satis_sayac2 = $db->prepare('SELECT COUNT(*) as sayac FROM ziyaretler where tamamlayan_id=:kullanici_id and durum=1 ');
-                        $data = $satis_sayac2->execute(['kullanici_id' => $_SESSION['kullanici_id']]);
+                        $data = $satis_sayac2->execute(['kullanici_id' => $_SESSION['kullanici']['id']]);
                         $satis_sayac2 = $satis_sayac2->fetch();
                         echo ($satis_sayac2["sayac"]);
                         ?>
                         <br>
                         <hr>
-                        <button type="button" class="btn btn-info"><i style="color: white;" class="fa-solid fa-check"></i></button>
+                        <button type="button" class="btn btn-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checks" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <desc>Download more icon variants from https://tabler-icons.io/i/checks</desc>
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M7 12l5 5l10 -10"></path>
+                                <path d="M2 12l5 5m5 -5l5 -5"></path>
+                            </svg></button>
                     </h4>
                 </div>
             </div>
@@ -250,14 +256,14 @@ if ($_SESSION['rol'] == 1) {
                             <th>TAMAMLANACAK TARİH</th>
                             <th>AÇIKLAMA</th>
                             <th>DETAY</th>
-                            <?php $rol = $_SESSION['rol'];
+                            <?php $rol = $_SESSION['kullanici']['role_id'];
                             if ($rol == 1 or 2) { ?>
                                 <th>TAMAMLANDI</th>
                                 <th>TAMAMLANAN TARİH</th>
 
                             <?php }
                             ?>
-                            <?php $rol = $_SESSION['rol'];
+                            <?php $rol = $_SESSION['kullanici']['role_id'];
                             if ($rol == 1) { ?>
                                 <th>DÜZENLE</th>
                                 <th>SİL</th>
@@ -286,7 +292,7 @@ if ($_SESSION['rol'] == 1) {
                                                 <path d="M9 17h6"></path>
                                                 <path d="M9 13h6"></path>
                                             </svg> </a></button></td>
-                                <?php $rol = $_SESSION['rol'];
+                                <?php $rol = $_SESSION['kullanici']['role_id'];
                                 if ($rol == 1) { ?>
                                     <form action="ziyaret.php" method="POST">
                                         <input type="hidden" name='id' value="<?php echo $item['id'] ?>">
@@ -314,7 +320,7 @@ if ($_SESSION['rol'] == 1) {
                                     </form>
                                 <?php }
                                 ?>
-                                <?php $rol = $_SESSION['rol'];
+                                <?php $rol = $_SESSION['kullanici']['role_id'];
                                 if ($rol == 2) { ?>
                                     <form action="ziyaret.php" method="POST">
                                         <input type="hidden" name='id' value="<?php echo $item['id'] ?>">
@@ -336,21 +342,21 @@ if ($_SESSION['rol'] == 1) {
                                     </form>
                                 <?php }
                                 ?>
-                                <?php $rol = $_SESSION['rol'];
+                                <?php $rol = $_SESSION['kullanici']['role_id'];
                                 if ($rol == 1 or 2) { ?>
                                     <td><?php echo (new DateTime($item['tarih']))->format("d/m/y h:i:s A"); ?></td>
                                 <?php }
                                 ?>
                                 <?php if ($item['durum'] == 1) {
                                 ?>
-                                    <?php $rol = $_SESSION['rol'];
+                                    <?php $rol = $_SESSION['kullanici']['role_id'];
                                     if ($rol == 1) { ?>
                                         <td>-</td>
                                         <td>-</td>
                                     <?php } ?>
                                 <?php
                                 } else { ?>
-                                    <?php $rol = $_SESSION['rol'];
+                                    <?php $rol = $_SESSION['kullanici']['role_id'];
                                     if ($rol == 1) { ?>
                                         <td>
                                             <div class="col-auto">

@@ -30,7 +30,7 @@ include "../header.php";
 $sql = $db->query('SELECT kullanicilar.*,roller.role_adi ,kullanici_subeler.sube_adi FROM kullanicilar
 LEFT JOIN roller ON roller.id =kullanicilar.role_id
 LEFT JOIN kullanici_subeler ON kullanici_subeler.id =kullanicilar.sube_id
-where kullanicilar.firma_id = ' . $_SESSION["firma_id"] . '
+where kullanicilar.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '
 ');
 
 ?>
@@ -128,7 +128,7 @@ where kullanicilar.firma_id = ' . $_SESSION["firma_id"] . '
                 <p class="ps-3 text-primary">=</p>
                 <div class="ps-3 mb-3 text-primary">
 
-                    <?php $kullanici_sayac = $db->query('SELECT COUNT(*) as sayac FROM kullanicilar   where kullanicilar.firma_id = ' . $_SESSION["firma_id"] . '')->fetch();
+                    <?php $kullanici_sayac = $db->query('SELECT COUNT(*) as sayac FROM kullanicilar   where kullanicilar.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '')->fetch();
                     echo ($kullanici_sayac["sayac"]);
                     ?>
 

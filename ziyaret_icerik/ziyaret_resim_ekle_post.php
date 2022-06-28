@@ -2,14 +2,10 @@
 include "../db.php";
 
 
-// $sql = $db->prepare("INSERT INTO  SET ziyaret_id=?,resim=? ");
-
-// $sql=$db->prepare('INSERT INTO ziyaret_resim SET ziyaret_id=?,resim=?');
-// $EKLEYAZ = $sql->execute([$_POST['ziyaret_id'],$_POST['resim']]);
 
 if ($_POST["resimler"]) {
     var_dump($_POST);
-    $targerDir = "C:/wamp64/www/tabler/img/";
+    $targerDir = "C:/wamp64/www/crm-yeni/img/";
     $filenames = array_filter($_FILES["resim"]["name"]);
     if (!empty($filenames)) {
         foreach ($_FILES['resim']['name'] as $name => $value) {
@@ -17,15 +13,16 @@ if ($_POST["resimler"]) {
             $new_name = md5(rand()) . '.' . $file_name[1];
             $sourcePath = $_FILES['resim']['tmp_name'][$name];
             $targetPath = $targerDir . $new_name;
-            $sql = $db->prepare("INSERT INTO ziyaret_resim SET resim=:resim, ziyaret_id=:id ");
-            $sql->execute([
-                "resim" => $new_name,
-                "id" => $_POST['id']
-            ]);
-            if (move_uploaded_file($_FILES["resim"]["tmp_name"][$name], 'C:/wamp64/www/tabler/img/' . $new_name)) {
+           
+            
+            if (move_uploaded_file($_FILES["resim"]["tmp_name"][0], 'C:/wamp64/www/crm-yeni/img/' . $new_name)) {
                 //$sql = $db->prepare('UPDATE ziyaretler SET aciklama =:notlar where id=:id');
                 //$sql->execute(['notlar' => $_POST['notlar'], 'id' => $_POST['id']]);
-
+                $sql = $db->prepare("INSERT INTO ziyaret_resim SET resim=:resim, ziyaret_id=:id ");
+                $sql->execute([
+                    "resim" => $new_name,
+                    "id" => $_POST['id']
+                ]);
                 echo "başarılı";
             } else {
                 echo "olmadı";
@@ -51,7 +48,7 @@ if ($_POST["resimler"]) {
         $resimAdi = md5(rand(100000, 999999));
         $name = $resimAdi . "." . $uzanti;
         $resimyolu = $resimAdi . "." . $uzanti;
-        move_uploaded_file($_FILES["resim"]["tmp_name"], 'C:/wamp64/www/tabler/img/' . $name);
+        move_uploaded_file($_FILES["resim"]["tmp_name"], 'C:/wamp64/www/crm-yeni/img/' . $name);
     }
     $EKLE = $db->prepare("INSERT INTO ziyaret_resim SET tamamlayan_id=?,resim=?");
 

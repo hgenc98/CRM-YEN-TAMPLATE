@@ -7,7 +7,7 @@ if ($_POST) {
     echo "sfsdf" . $_POST['musteri_id'];
 }
 
-$musteri = $db->query('SELECT * FROM musteriler WHERE  musteriler.firma_id =' . $_SESSION["firma_id"] . '')->fetchAll();
+$musteri = $db->query('SELECT * FROM musteriler WHERE  musteriler.firma_id =' . $_SESSION['kullanici']["firma_id"] . '')->fetchAll();
 ?>
 <div class="container page">
     <?php
@@ -26,7 +26,7 @@ $musteri = $db->query('SELECT * FROM musteriler WHERE  musteriler.firma_id =' . 
                         TAMAMLAYACAK PERSONEL *
                         <select class="form-select form-control mt-3" name="tamamlayan_id" aria-label="Default select example">
                             <option selected>SORUMLU SEÇİNİZ</option>
-                            <?php foreach ($db->query('SELECT * from kullanicilar  WHERE  kullanicilar.firma_id =' . $_SESSION["firma_id"] . '') as $kullanici) { ?>
+                            <?php foreach ($db->query('SELECT * from kullanicilar  WHERE  kullanicilar.firma_id =' . $_SESSION['kullanici']["firma_id"] . '') as $kullanici) { ?>
 
                                 <option value="<?php echo $kullanici["id"] ?>">
                                     <?= $kullanici["kullanici_adi"] . " " ?></option>
