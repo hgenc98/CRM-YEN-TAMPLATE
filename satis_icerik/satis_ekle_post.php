@@ -1,13 +1,16 @@
 <?php
 include "../db.php";
+session_start();
+
+
 var_dump($_POST);
 $urun_adi = $_POST ["urun_adi"];
 $adet = $_POST["urun_adedi"];
 $fiyat = $_POST["birim_fiyat"];
 
-$EKLE = $db->prepare("INSERT INTO satislar SET sirket_adi=?, musteri_id=?,kullanici_id=?,satis_tarihi=?,satis_not=?");
+$EKLE = $db->prepare("INSERT INTO satislar SET sirket_adi=?, musteri_id=?,kullanici_id=?,satis_tarihi=?,satis_not=?,firma_id=?");
 
-$EKLEYAZ = $EKLE->execute([$_POST['sirket_adi'] ,$_POST['musteri_id'], $_POST['kullanici_id'], $_POST['satis_tarihi'], $_POST['satis_not']]);
+$EKLEYAZ = $EKLE->execute([$_POST['sirket_adi'] ,$_POST['musteri_id'], $_POST['kullanici_id'], $_POST['satis_tarihi'], $_POST['satis_not'],$_SESSION['kullanici']['firma_id']]);
 $satis_id = $db->lastInsertId();
 if ($EKLE) {
     $_SESSION["updated"] = "1";

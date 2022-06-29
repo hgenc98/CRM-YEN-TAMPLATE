@@ -12,7 +12,7 @@
             confirmButtonText: 'Sil Gitsin!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = 'ziyaret_icerik/ziyaret_sil.php?id=' + id;
+                window.location.href = 'ziyaret_sil.php?id=' + id;
                 Swal.fire(
                     'Başarı İle Silindi !',
                     'Your file has been deleted.',
@@ -27,10 +27,6 @@
 include "../db.php";
 include "../islem2.php";
 include "../header.php";
-if (isset($_GET['ziyaret'])) {
-
-    echo '<script>Swal.fire("Başarılı", "Mesajınız Elemanınıza ulaştı", "success"); </script>';
-}
 
 
 $musteri = $db->query("SELECT * FROM musteriler ")->fetch();
@@ -45,8 +41,8 @@ if ($_SESSION['kullanici']['role_id'] == 1) {
     LEFT JOIN musteriler ON ziyaretler.musteri_id =musteriler.id
     LEFT JOIN kullanicilar as tamamlayan on ziyaretler.tamamlayan_id = tamamlayan.id
     LEFT JOIN musteri_eleman  on musteri_eleman.id = ziyaretler.musteri_eleman_id
-    WHERE tamamlayan_id = :id AND ziyaretler.firma_id =' . $_SESSION['kullanici']["firma_id"] . '');
-    $data = $sql->execute(['id' => $_SESSION['kullanici']['id']]);
+    WHERE ziyaretler.firma_id =' . $_SESSION['kullanici']["firma_id"] . '');
+    $data = $sql->execute(/*['id' => $_SESSION['kullanici']['id']]*/);
     $sql = $sql->fetchAll();
 } else {
     isset($_SESSION['kullanici_id']);

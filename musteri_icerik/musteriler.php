@@ -12,7 +12,7 @@
             confirmButtonText: 'Sil Gitsin!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = 'musteri_icerik/musteriler_sil.php?id=' + id;
+                window.location.href = 'musteriler_sil.php?id=' + id;
                 Swal.fire(
                     'Başarı İle Silindi !',
                     'Your file has been deleted.',

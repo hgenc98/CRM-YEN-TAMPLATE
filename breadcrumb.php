@@ -1,7 +1,6 @@
 <?php $breadcrumbs = isset($breadcrumbs) ? $breadcrumbs : []; ?>
 <div class="d-flex align-items-center mt-3   justify-content-between">
-    <ul class="breadcrumb breadcrumb-bullets " style="
--webkit-column-gap: 10px;">
+    <ul class="breadcrumb breadcrumb-bullets " style="-webkit-column-gap: 10px;">
 
         <li><a href="../anasayfa.php">Anasayfa</a></li>
         <?php foreach ($breadcrumbs as $b) : ?> .

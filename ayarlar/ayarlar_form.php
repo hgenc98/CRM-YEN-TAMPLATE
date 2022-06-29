@@ -29,7 +29,7 @@ if ($_GET) {
                               border-radius: 4px;">
                 <div class="row">
                     <div style="border-bottom: 1px solid #444;">
-                        <h1 style="color:brown" class="h3 mb-3 mt-3 font-weight-normal">AYARLAR </h1>
+                        <h1 style="color:brown" class="h3 mb-3 mt-3 font-weight-normal"> KULLANICI AYARLARI </h1>
                         <p style="color:brown;text-align:center">Lütfen gerekli belgeleri kontrol doldurunuz !! </p>
                     </div>
 

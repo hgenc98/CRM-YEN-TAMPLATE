@@ -10,7 +10,7 @@ include "../islem2.php";
         include "../breadcrumb.php"; ?>
 
         <div  class="w-50">
-            <form class="form-signin " method="post" action="musteri_icerik/musteri_ekle_post.php" enctype="multipart/form-data">
+            <form class="form-signin " method="post" action="musteri_ekle_post.php" enctype="multipart/form-data">
                 <div class="container col-12  " style="background-color:white;border: 1px solid var(--tblr-border-color);border-radius: 4px;">
                     <div class="row">
                         <div>

@@ -10,11 +10,12 @@ require '../src/PHPMailer.php';
 require '../src/SMTP.php';
 
 var_dump($_POST);
-$EKLE = $db->prepare("INSERT INTO ziyaretler SET tamamlayan_id=?,musteri_id=?,musteri_eleman_id=?,tel_no=?,musteri_adres=?,tamamlanacak_tarih=?,aciklama=?,durum=0");
+
+$EKLE = $db->prepare("INSERT INTO ziyaretler SET tamamlayan_id=?,musteri_id=?,musteri_eleman_id=?,tel_no=?,musteri_adres=?,tamamlanacak_tarih=?,aciklama=?,firma_id=?,durum=0");
 
 $EKLEYAZ = $EKLE->execute([
     $_POST['tamamlayan_id'], $_POST['musteri_adi'], $_POST['musteri_eleman_id'], $_POST['tel_no'],
-    $_POST['musteri_adres'], $_POST['tamamlanacak_tarih'], $_POST['aciklama']
+    $_POST['musteri_adres'], $_POST['tamamlanacak_tarih'], $_POST['aciklama'],$_SESSION['kullanici']['firma_id']
 ]);
 $EKLE2 = $db->prepare("SELECT * FROM kullanicilar where id=:id");
 $EKLEYAZ = $EKLE2->execute([
@@ -33,7 +34,7 @@ $mail->Encoding = 'base64';
 $mail->isSMTP();
 
 $mail->Username   = 'genc3898@gmail.com';
-$mail->Password   = 'Hgenc40380';
+$mail->Password   = 'swausxtrbfrzowpu';
 
 $mail->Host = 'smtp.googlemail.com';
 $mail->Port = 465;
@@ -51,10 +52,10 @@ $mail->setFrom('genc3898@gmail.com');
 
 $mail->isHTML(true);
 $mail->Subject = 'İletişim Formu.';
-        $mail->Body = $_POST['tamamlanacak_tarih'] . " bu tarihte " . $_SESSION["adi"] . " şu kişi tarafından mail gelmiştir lütfen alanınızı kontrol ediniz !!!" ;
+        $mail->Body = $_POST['tamamlanacak_tarih'] . " bu tarihte " .  $_SESSION['kullanici']["kullanici_adi"] . " (Admin) tarafından size ziyaret düzenlenmiştir. lütfen alanınızı kontrol ediniz !!!" ;
         $mail->Body .= "
         <html> 
-        <a type='button' href ='http://localhost/crm/giris.php'>SAYFAYA GİT</a>
+        <a type='button' class='btn btn-primary' href ='http://localhost/crm-yeni/giris.php'>SAYFAYA GİT</a>
         </html>
         ";
 $mail->send();

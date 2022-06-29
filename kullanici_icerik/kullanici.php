@@ -12,7 +12,7 @@
             confirmButtonText: 'Sil Gitsin!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = 'kullanici_icerik/kullanici_sil.php?id=' + id;
+                window.location.href = 'kullanici_sil.php?id=' + id;
                 Swal.fire(
                     'Başarı İle Silindi !',
                     'Your file has been deleted.',

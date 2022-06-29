@@ -60,9 +60,10 @@ if ($_GET) {
                 </fieldset>
             </form>
             <form id="signup-fieldset" method="POST" action="kayit.php" class="hidden" style="position: relative; margin:auto;padding-top: 0;" enctype="multipart/form-data">
-                <h1 class="animated fadeInUp animate1" id="title-login">ARAMIZA KATILMAK İSTER MİSİNİZ? !</h1>
+                <h1 class="animated fadeInUp animate1" id="title-login">ARAMIZA KATILMAK İSTER MİSİNİZ ? </h1>
                 <h1 class="animated fadeInUp animate1 hidden" id="title-signup">HOŞGELDİNİZ ARAMIZA !</h1>
                 <fieldset>
+            
                     <p style="color:white">Adınız Soyadınız :</p>
                     <input class="login animated fadeInUp animate2" name="kullanici_adi" type="textbox" required placeholder="adınız soyadınız " value="">
                     <p style="color:white">Firma Adı :</p>
@@ -75,6 +76,7 @@ if ($_GET) {
                     <input class="login animated fadeInUp animate2" name="tel" type="textbox" required placeholder="tel" value="">
                     <p style="color:white">FİRMA LOGO :</p>
                     <input class="login animated fadeInUp animate2" name="resim" type="file" required placeholder="resimler" value="">
+                    
                     
                     <input type="submit" id="signup-form-submit" class="login_form button animated fadeInUp animate4 hidden" value="Kaydol">
                     <p><a id="lost-password-link" href="" class="animated fadeIn animate5">SÖZLEŞME</a></p>

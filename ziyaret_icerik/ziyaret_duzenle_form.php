@@ -35,7 +35,7 @@ die;*/
                 <h3 class="text-danger text-center mt-4">ZİYARET BİLGİLERİNİ DÜZENLE</h3>
                 <hr>
                 <?php
-                $rol = $_SESSION['rol'];
+                $rol = $_SESSION['kullanici']['role_id'];
                 if ($rol == 1) { ?>
                     <div class="form-label-group mb-3  mt-3  col-6">
                         TAMAMLAYAN KİŞİ *

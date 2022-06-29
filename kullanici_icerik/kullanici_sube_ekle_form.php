@@ -19,12 +19,12 @@ include "../islem2.php";
                     </div>
                     <hr>
                     <div class="form-label-group mb-3 text-start mt-3 col-6">
-                        E-POSTA *
-                        <input type="email" class="form-control mt-3" name="e_posta" placeholder="e posta" required="">
-                    </div>
-                    <div class="form-label-group mb-3 text-start mt-3 col-6">
                         YETKİLİ ADI VE SOYADI *
                         <input type="text" class="form-control mt-3" name="yetkili_adi" placeholder="yetkili adi" required="">
+                    </div>
+                    <div class="form-label-group mb-3 text-start mt-3 col-6">
+                        E-POSTA *
+                        <input type="email" class="form-control mt-3" name="e_posta" placeholder="e posta" required="">
                     </div>
                     <div class="form-label-group mb-3 text-start mt-3 col-6">
                         YETKİLİ TELEFONU *

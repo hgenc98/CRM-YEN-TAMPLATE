@@ -78,10 +78,10 @@ if ($_POST) {
             </select>
           </div>
           <div class="form-label-group mb-3 text-start mt-3  col-6">
-            <p> SATICI PERSONELİN ADI SOYADI *</p>
+            <p> SATIŞ YAPAN PERSONELİN <br> ADI SOYADI *</p>
             <select class="form-select form-control mb-4" name="kullanici_id" id="kullanici" aria-label="Default select example">
               <option selected class="text-center">PERSONEL SEÇİNİZ</option>
-              <?php foreach ($db->query("SELECT * from kullanicilar where role_id=2") as $kullanici) { ?>
+              <?php foreach ($db->query("SELECT * from kullanicilar where role_id") as $kullanici) { ?>
 
                 <option value="<?php echo $kullanici["id"] ?>">
                   <?= $kullanici["kullanici_adi"] . " " ?></option>

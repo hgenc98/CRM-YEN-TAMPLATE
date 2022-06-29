@@ -1,3 +1,28 @@
+<script>
+    function sil(id) {
+        // alert(id);
+        Swal.fire({
+            title: 'Yapılan Satışı Silmek Üzeresiniz ! Hala Silmek İstiyormusunuz ?',
+            text: 'Bunu İşlemi Asla Geri Alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            confirmButtonColor: '#3085d6',
+
+            confirmButtonText: 'Sil Gitsin!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'satislar_sil.php?id=' + id;
+                Swal.fire(
+                    'Başarı İle Silindi !',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+    }
+</script>
+
 <?php
 include "../header.php";
 include "../db.php";
@@ -12,7 +37,7 @@ if ($_SESSION['kullanici']['role_id'] == 1) {
     $sql = $db->prepare('SELECT satislar.*, satislar.satis_tarihi,satis_not,musteriler.musteri_adi as musteri_adi , kullanicilar.kullanici_adi FROM satislar
     INNER JOIN musteriler ON musteriler.id = satislar.musteri_id
     INNER JOIN kullanicilar ON kullanicilar.id = satislar.kullanici_id
-    where satislar.kullanici_id=:id AND satislar.firma_id=' . $_SESSION['kullanici']["firma_id"] . '
+    where  satislar.firma_id=' . $_SESSION['kullanici']["firma_id"] . '
     ');
     $data = $sql->execute(['id' => $_SESSION['kullanici']['id']]);
     $sql = $sql->fetchAll();
@@ -122,7 +147,7 @@ if ($_SESSION['kullanici']['role_id'] == 1) {
 
                                     <td class="card-header ">
                                         <div class="col-auto">
-                                            <span class="bg-danger text-white avatar">
+                                            <span class="bg-danger text-white avatar mt-3">
                                                 <a onclick="sil(<?php echo $item['id']; ?>)"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                         <desc>Download more icon variants from https://tabler-icons.io/i/trash</desc>
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
