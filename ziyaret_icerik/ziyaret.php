@@ -136,6 +136,7 @@ if ($_SESSION['kullanici']['role_id'] == 1) {
                                         <line x1="9" y1="13" x2="15" y2="13" />
                                         <line x1="9" y1="17" x2="15" y2="17" />
                                     </svg>
+                                    
                                     <h4 class="mt-3"> TAMAMLANAN</h4>
                                 </div>
                             </div>

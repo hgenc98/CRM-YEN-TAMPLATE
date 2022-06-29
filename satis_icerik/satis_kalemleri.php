@@ -7,7 +7,7 @@ include "../islem2.php";
 $sql = $db->prepare('SELECT * FROM satis_kalemleri Where id=?');
 
 
-if ($_SESSION['rol'] == 1) {
+if ($_SESSION['kullanici']['role_id'] == 1) {
     $sql = $db->query('SELECT satis_kalemleri.*,satislar.id as satis_adi FROM satis_kalemleri
     INNER JOIN satislar ON satislar.id = satis_kalemleri.satis_id
     ');
@@ -43,7 +43,7 @@ if ($_SESSION['rol'] == 1) {
                                 <th>EKLENME TARİHİ</th>
                                 <th>GÜNCELLEME TARİHİ</th>
 
-                                <?php $rol = $_SESSION['rol'];
+                                <?php $rol = $_SESSION['kullanici']['role_id'];
                                 if ($rol == 1) { ?>
                                     <th>DÜZENLE</th>
                                     <th>SİL</th>
@@ -65,10 +65,10 @@ if ($_SESSION['rol'] == 1) {
                                     <td><?php echo $item['guncelleme_tarihi'] ?></td>
 
 
-                                    <?php $rol = $_SESSION['rol'];
+                                    <?php $rol = $_SESSION['kullanici']['role_id'];
                                     if ($rol == 1) { ?>
                                         <td>
-                                            <button type="button" class="btn btn-info"><a href="satis_kalemleri_duzenle_form.php?id=<?php echo $item["id"] ?>"><a href="satis_duzenle_form.php?id=<?php echo $item["id"] ?>"><svg style="color:white" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-pencil" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <button type="button" class="btn btn-info"><a href="satis_kalemleri_duzenle_form.php?id=<?php echo $item["id"] ?>"><svg style="color:white" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-pencil" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <desc>Download more icon variants from https://tabler-icons.io/i/file-pencil</desc>
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>

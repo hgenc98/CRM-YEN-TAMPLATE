@@ -81,7 +81,7 @@ $eleman = $db->query('SELECT * FROM  musteri_eleman   where id = musteri_id')->f
                         <tr>
                             <td><?php echo $item['baslik'] ?></td>
                             <td><?php echo $item['musteri_adi'] ?></td>
-                            <td><?php echo $item['eleman_adi'] ?></td>
+                            <td style="background: beige;"><?php echo $item['eleman_adi'] ?></td>
                             <td><?php echo $item['telefon_no'] ?></td>
                             <td><?php echo $item['adres'] ?></td>
 

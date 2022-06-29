@@ -61,7 +61,7 @@ where kullanicilar.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '
                
             </div>
 
-            <div class="card-body">
+            <div class="card">
                 <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap datatable">
                         <thead>
@@ -80,7 +80,7 @@ where kullanicilar.firma_id = ' . $_SESSION['kullanici']["firma_id"] . '
                             foreach ($sql as $item) {
                             ?>
                                 <tr>
-                                    <td><?php echo $item['kullanici_adi'] ?></td>
+                                    <td style="background: beige;"><?php echo $item['kullanici_adi'] ?></td>
                                     <td><?php echo $item['e_posta'] ?></td>
                                     <td><?php echo $item['tel'] ?></td>
                                     <td><?php echo $item['role_adi'] ?></td>
