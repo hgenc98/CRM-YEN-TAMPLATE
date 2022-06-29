@@ -273,7 +273,7 @@ if ($_SESSION['kullanici']['role_id'] == 1) {
                         ?>
                             <tr>
                                 <td><?php echo $item['tamamlayan_adi'] ?></td>
-                                <td><?php echo $item['baslik'] ?></td>
+                                <td style="color: firebrick;"><?php echo $item['baslik'] ?></td>
                                 <td><?php echo $item['eleman_adi'] ?></td>
                                 <td><?php echo $item['musteri_adres'] ?></td>
                                 <td><?php echo $item['tel_no'] ?></td>

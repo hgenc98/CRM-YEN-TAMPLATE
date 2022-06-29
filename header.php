@@ -182,7 +182,7 @@ session_start();
                     </ul>
 
                 </div>
-                <div class="navbar-nav flex-row order-md-last">
+                <div class="navbar-nav flex-row order-md-last pe-3" style="border: 1px dashed black;border-radius: 20px;">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
                             <div class="d-none d-xl-block ps-3">

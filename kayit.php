@@ -68,4 +68,4 @@ if ($_FILES["resim"]) {
 // $EKLEYAZ = $sql->execute([$_POST['ziyaret_id'],$_POST['resim']]);
 
  ?>
-<meta http-equiv="refresh" content="500;URL=giris.php">
+<meta http-equiv="refresh" content="0;URL=giris.php">
