@@ -9,7 +9,6 @@ require '../src/Exception.php';
 require '../src/PHPMailer.php';
 require '../src/SMTP.php';
 
-var_dump($_POST);
 
 $EKLE = $db->prepare("INSERT INTO ziyaretler SET tamamlayan_id=?,musteri_id=?,musteri_eleman_id=?,tel_no=?,musteri_adres=?,tamamlanacak_tarih=?,aciklama=?,firma_id=?,durum=0");
 

@@ -18,16 +18,6 @@ if ($kullanici) {
     $_SESSION["login"] = true;
     $_SESSION["kullanici"] = $kullanici;
 
-    /*
-
-$_SESSION["adi"] = $kullanici['kullanici_adi'];
-$_SESSION["rol"] = $kullanici['role_id'];
-$_SESSION["kullanici_id"] = $kullanici['id'];
-$_SESSION["firma_id"] = $kullanici['firma_id'];
-$_SESSION["sozlesme_bitis"] = $kullanici['sozlesme_bitis'];
-$_SESSION["e_posta"] = $kullanici['e_posta'];
-$_SESSION["firma_logo"] = $kullanici['firma_logo'];
-// */
 
    
 } elseif (!$kullanici) {
